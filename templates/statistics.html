@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="p-4 p-lg-5 max-w-1600 mx-auto">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-5">
+        <div>
+            <h1 class="display-4 font-headline fw-bolder tracking-tighter mb-2">Statistical Analysis</h1>
+            <p class="text-muted mb-0">Deep-lens footprint diagnostics for Q3 Regional Performance.</p>
+        </div>
+        <div class="bg-light p-1 rounded d-flex gap-1">
+            <button id="btn-live" onclick="toggleStats('live')" class="btn btn-white shadow-sm fw-bold text-primary text-uppercase" style="font-size: 12px;">Live Stream</button>
+            <button id="btn-historic" onclick="toggleStats('historic')" class="btn btn-light fw-bold text-muted text-uppercase" style="font-size: 12px;">Historic Baseline</button>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-8">
+            <div class="card border-0 shadow-sm h-100 position-relative overflow-hidden">
+                <div class="card-body p-5 position-relative z-1">
+                    <span class="fw-bold text-uppercase tracking-widest text-muted" style="font-size: 11px;">Core Footfall Density</span>
+                    <div class="d-flex align-items-baseline gap-3 mt-2">
+                        <h1 id="density-val" class="display-1 font-headline fw-bolder tracking-tighter mb-0">42.8k</h1>
+                        <span class="text-secondary fw-bold d-flex align-items-center"><i data-lucide="trending-up" class="me-1" style="width: 16px;"></i> +14.2%</span>
+                    </div>
+                </div>
+                <i data-lucide="bar-chart-3" class="position-absolute opacity-10" style="width: 250px; height: 250px; right: -20px; bottom: -20px;"></i>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card bg-dark text-white border-0 shadow-sm h-100">
+                <div class="card-body p-4 d-flex flex-column justify-content-between">
+                    <div>
+                        <h5 class="font-headline fw-bold mb-4 d-flex align-items-center gap-2">
+                            <i data-lucide="arrow-left-right" class="text-secondary"></i> Two-Sample T-Test
+                        </h5>
+                        <div class="d-flex justify-content-between border-bottom border-secondary border-opacity-25 pb-2 mb-3">
+                            <span class="text-uppercase tracking-widest text-white-50" style="font-size: 12px;">P-Value</span>
+                            <span class="fs-5 font-monospace fw-bold text-danger">0.0042</span>
+                        </div>
+                        <div class="d-flex justify-content-between border-bottom border-secondary border-opacity-25 pb-2 mb-3">
+                            <span class="text-uppercase tracking-widest text-white-50" style="font-size: 12px;">T-Statistic</span>
+                            <span class="fs-5 font-monospace fw-bold">3.821</span>
+                        </div>
+                        <p class="text-white-50 fst-italic lh-sm" style="font-size: 10px;">Null hypothesis rejected: Significant variance detected between Entrance and Checkout dwell times.</p>
+                    </div>
+                    <div class="d-flex gap-2 mt-4">
+                        <div class="flex-grow-1 bg-white bg-opacity-10 p-2 rounded text-center">
+                            <small class="text-uppercase text-white-50" style="font-size: 9px;">Entrance</small>
+                            <div class="fw-bold fs-6">12.4m</div>
+                        </div>
+                        <div class="flex-grow-1 bg-white bg-opacity-10 p-2 rounded text-center">
+                            <small class="text-uppercase text-white-50" style="font-size: 9px;">Checkout</small>
+                            <div class="fw-bold fs-6">4.8m</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card bg-light border-0 shadow-sm h-100">
+                <div class="card-body p-4">
+                    <h6 class="fw-bold text-uppercase tracking-widest text-muted mb-4" style="font-size: 12px;">Routine Parameters</h6>
+                    <div class="row g-4">
+                        <div class="col-6">
+                            <p class="text-muted fw-bold text-uppercase tracking-widest mb-0" style="font-size: 10px;">Mean</p>
+                            <h4 class="font-headline fw-bold mb-0">1,244.2</h4>
+                        </div>
+                        <div class="col-6">
+                            <p class="text-muted fw-bold text-uppercase tracking-widest mb-0" style="font-size: 10px;">Median</p>
+                            <h4 class="font-headline fw-bold mb-0">1,180.0</h4>
+                        </div>
+                        <div class="col-6">
+                            <p class="text-muted fw-bold text-uppercase tracking-widest mb-0" style="font-size: 10px;">Mode</p>
+                            <h4 class="font-headline fw-bold mb-0">1,050.0</h4>
+                        </div>
+                        <div class="col-6">
+                            <p class="text-muted fw-bold text-uppercase tracking-widest mb-0" style="font-size: 10px;">Range</p>
+                            <h4 class="font-headline fw-bold mb-0">4,890.0</h4>
+                        </div>
+                        <div class="col-12 border-top pt-3">
+                            <p class="text-muted fw-bold text-uppercase tracking-widest mb-0" style="font-size: 10px;">Std Dev (σ)</p>
+                            <h2 class="font-headline fw-bold text-primary mb-0">314.15</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body p-4 p-lg-5">
+                    <div class="d-flex justify-content-between align-items-start mb-4">
+                        <h6 class="fw-bold text-uppercase tracking-widest text-muted">Regression Modeling</h6>
+                        <div class="d-flex gap-3">
+                            <div class="d-flex align-items-center gap-2"><span class="bg-primary rounded-circle" style="width: 10px; height: 10px;"></span><small class="fw-bold" style="font-size: 10px;">Linear</small></div>
+                            <div class="d-flex align-items-center gap-2"><span class="bg-secondary rounded-circle" style="width: 10px; height: 10px;"></span><small class="fw-bold" style="font-size: 10px;">Power</small></div>
+                        </div>
+                    </div>
+                    <div style="height: 250px; width: 100%;">
+                        <canvas id="regressionChart"></canvas>
+                    </div>
+                    <div class="row g-4 border-top mt-2 pt-4">
+                        <div class="col-6">
+                            <p class="fw-bold text-primary text-uppercase mb-1" style="font-size: 10px;">Linear: y = mx + c</p>
+                            <h5 class="font-monospace fw-bold mb-0">y = 1.24x + 12.5</h5>
+                            <small class="text-muted fst-italic" style="font-size: 10px;">R² = 0.894</small>
+                        </div>
+                        <div class="col-6">
+                            <p class="fw-bold text-secondary text-uppercase mb-1" style="font-size: 10px;">Power: y = ax^b</p>
+                            <h5 class="font-monospace fw-bold mb-0">y = 0.82x ^ 1.14</h5>
+                            <small class="text-muted fst-italic" style="font-size: 10px;">R² = 0.942</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-12">
+            <div class="card border-0 shadow-sm overflow-hidden">
+                <div class="card-header bg-light p-4 border-bottom d-flex justify-content-between align-items-center">
+                    <h6 class="font-headline fw-bold text-uppercase tracking-widest mb-0" style="font-size: 12px;">Zonal Comparative Metrics</h6>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0 align-middle">
+                        <thead>
+                            <tr>
+                                <th class="text-muted fw-bold text-uppercase tracking-widest px-4 py-3 border-0" style="font-size: 10px;">Zone ID</th>
+                                <th class="text-muted fw-bold text-uppercase tracking-widest px-4 py-3 border-0" style="font-size: 10px;">Sample Size (n)</th>
+                                <th class="text-muted fw-bold text-uppercase tracking-widest px-4 py-3 border-0" style="font-size: 10px;">Avg Dwell</th>
+                                <th class="text-muted fw-bold text-uppercase tracking-widest px-4 py-3 border-0" style="font-size: 10px;">Variance (s²)</th>
+                                <th class="text-muted fw-bold text-uppercase tracking-widest px-4 py-3 border-0" style="font-size: 10px;">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="border-top-0">
+                            <tr>
+                                <td class="px-4 py-3 font-monospace fw-bold text-sm">North-Entry-A</td>
+                                <td class="px-4 py-3 text-sm">4,502</td>
+                                <td class="px-4 py-3 fw-bold text-primary text-sm">14.2m</td>
+                                <td class="px-4 py-3 text-muted text-sm">2.14</td>
+                                <td class="px-4 py-3"><span class="badge bg-danger bg-opacity-10 text-danger fw-bold tracking-widest">HIGH CONGESTION</span></td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-monospace fw-bold text-sm">South-Check-04</td>
+                                <td class="px-4 py-3 text-sm">3,891</td>
+                                <td class="px-4 py-3 fw-bold text-primary text-sm">06.8m</td>
+                                <td class="px-4 py-3 text-muted text-sm">0.85</td>
+                                <td class="px-4 py-3"><span class="badge bg-primary bg-opacity-10 text-primary fw-bold tracking-widest">OPTIMAL FLOW</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="p-4 p-lg-5 d-flex gap-4 h-100 flex-column flex-xl-row">
+    <div class="flex-grow-1 d-flex flex-column gap-4">
+        <div class="d-flex justify-content-between align-items-end">
+            <div>
+                <span class="text-muted fw-bold text-uppercase tracking-wider" style="font-size: 10px;">Real-time Environment</span>
+                <h2 class="display-6 font-headline fw-bolder tracking-tighter mb-0">Main Store Floor Plan</h2>
+            </div>
+            <div class="d-flex gap-2 align-items-center">
+                <div class="bg-light px-3 py-1 d-flex align-items-center gap-2 rounded">
+                    <span class="rounded-circle bg-danger" style="width: 8px; height: 8px;"></span>
+                    <span class="fw-bold text-uppercase tracking-wider" style="font-size: 10px;">Congested</span>
+                </div>
+                <div class="bg-light px-3 py-1 d-flex align-items-center gap-2 rounded">
+                    <span class="rounded-circle bg-warning" style="width: 8px; height: 8px;"></span>
+                    <span class="fw-bold text-uppercase tracking-wider" style="font-size: 10px;">Moderate</span>
+                </div>
+                <button id="toggle-heatmap-btn" class="btn btn-primary btn-sm ms-2 fw-bold text-uppercase" style="font-size: 10px; letter-spacing: 1px;">Hide Overlay</button>
+            </div>
+        </div>
+
+        <div class="position-relative flex-grow-1 bg-light rounded-3 overflow-hidden" style="min-height: 500px;">
+            <img src="https://images.unsplash.com/photo-1567449303183-ae0d6ed1498e?q=80&w=1000" class="w-100 h-100 object-fit-cover opacity-50 grayscale" alt="Floor plan">
+            <div id="heatmap-overlay" class="heatmap-gradient position-absolute w-100 h-100 top-0 start-0"></div>
+
+            <div class="position-absolute bg-white bg-opacity-75 p-3 shadow-sm rounded backdrop-blur" style="top: 15%; left: 10%;">
+                <span class="text-muted fw-bold d-block mb-1" style="font-size: 9px;">ZONE A</span>
+                <span class="font-headline fw-bolder tracking-tight" style="font-size: 14px;">Entrance</span>
+                <div class="mt-1 text-danger fw-bold" style="font-size: 10px;">142 INFLOW / HR</div>
+            </div>
+            <div class="position-absolute bg-white bg-opacity-75 p-3 shadow-sm rounded backdrop-blur border border-danger border-opacity-25" style="top: 45%; right: 25%;">
+                <span class="text-muted fw-bold d-block mb-1" style="font-size: 9px;">ZONE B</span>
+                <span class="font-headline fw-bolder tracking-tight text-danger" style="font-size: 14px;">High-Conversion Area</span>
+                <div class="mt-1 text-dark fw-medium" style="font-size: 10px;">AVG DWELL: 12.4 MIN</div>
+            </div>
+            <div class="position-absolute bg-white bg-opacity-75 p-3 shadow-sm rounded backdrop-blur" style="bottom: 20%; left: 40%;">
+                <span class="text-muted fw-bold d-block mb-1" style="font-size: 9px;">ZONE C</span>
+                <span class="font-headline fw-bolder tracking-tight" style="font-size: 14px;">Checkout</span>
+                <div class="mt-1 text-warning fw-bold" style="font-size: 10px;">QUEUE TIME: 2.1 MIN</div>
+            </div>
+
+            <div class="position-absolute border border-white border-opacity-50 bg-white bg-opacity-10 backdrop-blur" style="top: 40%; left: 30%; width: 48px; height: 96px;">
+                <span class="position-absolute top-0 start-0 translate-middle-y bg-dark bg-opacity-50 text-white font-monospace px-1" style="font-size: 8px;">ID_8829</span>
+            </div>
+            <div class="position-absolute border border-white border-opacity-50 bg-white bg-opacity-10 backdrop-blur" style="top: 60%; left: 35%; width: 40px; height: 80px;">
+                <span class="position-absolute top-0 start-0 translate-middle-y bg-dark bg-opacity-50 text-white font-monospace px-1" style="font-size: 8px;">ID_8831</span>
+            </div>
+        </div>
+
+        <div class="bg-light bg-opacity-50 backdrop-blur p-3 d-flex align-items-center justify-content-between rounded">
+            <div class="d-flex align-items-center gap-3">
+                <div class="d-flex align-items-center gap-2 text-primary">
+                    <i data-lucide="shield-check" style="width: 16px;"></i>
+                    <span class="fw-bold font-headline text-uppercase tracking-widest" style="font-size: 12px;">GDPR Privacy Mode Active</span>
+                </div>
+                <div class="border-start border-secondary opacity-25" style="height: 16px;"></div>
+                <p class="text-muted fw-medium mb-0" style="font-size: 10px;">No video storage. Metadata only. Anonymized DetectionID.</p>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+                <span class="fw-bold text-uppercase text-muted" style="font-size: 10px;">Status</span>
+                <span class="spinner-grow spinner-grow-sm text-primary" style="width: 8px; height: 8px;"></span>
+                <span class="fw-bold text-uppercase" style="font-size: 10px;">Secure Stream</span>
+            </div>
+        </div>
+    </div>
+
+    <aside style="width: 100%; max-width: 384px;" class="d-flex flex-column gap-4">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body p-4">
+                <div class="border-bottom pb-3 mb-4">
+                    <span class="text-muted fw-bold text-uppercase tracking-wider" style="font-size: 10px;">Macro Analytics</span>
+                    <h5 class="font-headline fw-bold mb-0 mt-1">Store Performance</h5>
+                </div>
+                
+                <div class="d-flex flex-column gap-3">
+                    <div class="bg-light p-3 rounded">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="text-muted fw-bold text-uppercase tracking-wider" style="font-size: 10px;">Engagement Score</span>
+                            <i data-lucide="trending-up" class="text-primary" style="width: 16px;"></i>
+                        </div>
+                        <h2 class="font-headline fw-bolder mb-0">84.2 <small class="text-primary fw-bold" style="font-size: 12px;">+4.1%</small></h2>
+                    </div>
+
+                    <div class="bg-light p-3 rounded">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="text-muted fw-bold text-uppercase tracking-wider" style="font-size: 10px;">Mean Dwell Time</span>
+                            <i data-lucide="timer" class="text-muted" style="width: 16px;"></i>
+                        </div>
+                        <h2 class="font-headline fw-bolder mb-0">08:42 <small class="text-muted fw-bold" style="font-size: 10px;">MINUTES</small></h2>
+                    </div>
+
+                    <div class="bg-light p-3 rounded">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted fw-bold text-uppercase tracking-wider" style="font-size: 10px;">AI Confidence %</span>
+                            <span class="text-primary fw-bold font-monospace" style="font-size: 10px;">STABLE</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-3">
+                            <h3 class="font-headline fw-bolder mb-0">99.4%</h3>
+                            <div class="progress flex-grow-1" style="height: 6px;">
+                                <div class="progress-bar bg-primary" style="width: 99.4%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-dark text-white p-3 rounded">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="text-white-50 fw-bold text-uppercase tracking-wider" style="font-size: 10px;">Active Detections</span>
+                            <i data-lucide="radio" class="text-warning" style="width: 16px;"></i>
+                        </div>
+                        <h2 class="font-headline fw-bolder mb-0">312 <small class="text-white-50 fw-bold text-uppercase tracking-widest" style="font-size: 10px;">Live Now</small></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card border-0 shadow-sm flex-grow-1 overflow-hidden">
+            <div class="card-body p-4 d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h6 class="font-headline fw-bolder text-uppercase tracking-widest mb-0" style="font-size: 12px;">Recent Zone Shifts</h6>
+                    <button class="btn btn-link text-muted p-0"><i data-lucide="more-horizontal" style="width: 16px;"></i></button>
+                </div>
+                <div class="d-flex flex-column gap-2 overflow-auto pe-2">
+                    <div class="d-flex align-items-center justify-content-between bg-light p-3 rounded">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="bg-danger rounded-pill" style="width: 4px; height: 32px;"></div>
+                            <div>
+                                <p class="mb-0 fw-bold font-headline" style="font-size: 11px;">Apparel Rack 04</p>
+                                <p class="mb-0 text-muted fw-medium" style="font-size: 9px;">Congestion Spike</p>
+                            </div>
+                        </div>
+                        <span class="font-monospace fw-bold text-danger" style="font-size: 10px;">+220%</span>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between bg-light p-3 rounded">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="bg-primary rounded-pill" style="width: 4px; height: 32px;"></div>
+                            <div>
+                                <p class="mb-0 fw-bold font-headline" style="font-size: 11px;">Footwear Section</p>
+                                <p class="mb-0 text-muted fw-medium" style="font-size: 9px;">Engagement Peak</p>
+                            </div>
+                        </div>
+                        <span class="font-monospace fw-bold text-primary" style="font-size: 10px;">14.2M AVG</span>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between bg-light p-3 rounded">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="bg-warning rounded-pill" style="width: 4px; height: 32px;"></div>
+                            <div>
+                                <p class="mb-0 fw-bold font-headline" style="font-size: 11px;">Self-Checkout</p>
+                                <p class="mb-0 text-muted fw-medium" style="font-size: 9px;">Queue Forming</p>
+                            </div>
+                        </div>
+                        <span class="font-monospace fw-bold text-warning" style="font-size: 10px;">6 PERS</span>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between bg-light p-3 rounded opacity-50">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="bg-secondary rounded-pill" style="width: 4px; height: 32px;"></div>
+                            <div>
+                                <p class="mb-0 fw-bold font-headline" style="font-size: 11px;">Backroom Exit</p>
+                                <p class="mb-0 text-muted fw-medium" style="font-size: 9px;">No Activity</p>
+                            </div>
+                        </div>
+                        <span class="font-monospace fw-bold text-secondary" style="font-size: 10px;">00:00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+</div>
+{% endblock %}

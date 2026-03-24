@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precision Lens - Retail AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <aside class="sidebar d-none d-md-flex flex-column p-4 border-end">
+        <div class="d-flex align-items-center gap-3 mb-5">
+            <div class="bg-primary rounded d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+                <i data-lucide="circle" class="text-white" style="fill: currentColor; width: 16px;"></i>
+            </div>
+            <div>
+                <h6 class="mb-0 fw-bold text-dark font-headline">Precision Lens</h6>
+                <small class="text-muted fw-bold text-uppercase" style="font-size: 0.65rem; letter-spacing: 1px;">Retail AI v2.4</small>
+            </div>
+        </div>
+
+        <nav class="nav flex-column gap-1 flex-grow-1">
+            <a href="{{ url_for('dashboard') }}" class="nav-link {% if current_page == 'dashboard' %}active{% endif %}">
+                <i data-lucide="layout-dashboard" class="me-2"></i> Dashboard
+            </a>
+            <a href="{{ url_for('heatmap') }}" class="nav-link {% if current_page == 'heatmap' %}active{% endif %}">
+                <i data-lucide="sun" class="me-2"></i> Heatmap
+            </a>
+            <a href="{{ url_for('comparison') }}" class="nav-link {% if current_page == 'comparison' %}active{% endif %}">
+                <i data-lucide="arrow-left-right" class="me-2"></i> Zone Comparison
+            </a>
+            <a href="{{ url_for('statistics') }}" class="nav-link {% if current_page == 'statistics' %}active{% endif %}">
+                <i data-lucide="bar-chart-3" class="me-2"></i> Statistics
+            </a>
+            <a href="{{ url_for('reports') }}" class="nav-link {% if current_page == 'reports' %}active{% endif %}">
+                <i data-lucide="file-output" class="me-2"></i> Reports
+            </a>
+            <a href="{{ url_for('privacy') }}" class="nav-link {% if current_page == 'privacy' %}active{% endif %}">
+                <i data-lucide="shield-check" class="me-2"></i> GDPR
+            </a>
+        </nav>
+        
+        <div class="border-top pt-3 mt-3">
+            <a href="{{ url_for('logout') }}" class="nav-link text-danger">
+                <i data-lucide="log-out" class="me-2"></i> Logout ({{ session['user'] }})
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content d-flex flex-column min-vh-100">
+        <header class="bg-surface border-bottom px-4 py-3 d-flex justify-content-between align-items-center sticky-top z-3">
+            <div class="d-flex align-items-center gap-4">
+                <span class="fs-5 fw-bolder text-dark text-uppercase font-headline tracking-tighter">Footfall Tracker</span>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+                <div id="topbar-gdpr" class="d-none d-md-flex align-items-center gap-2 px-3 py-2 bg-light rounded">
+                    <i data-lucide="shield-check" class="text-danger" style="fill: currentColor; width: 16px;"></i>
+                    <span class="fw-bold text-muted text-uppercase" style="font-size: 0.7rem; letter-spacing: 1px;">GDPR Privacy Mode: Active</span>
+                </div>
+                <button class="btn btn-light rounded-circle p-2"><i data-lucide="bell" style="width: 20px;"></i></button>
+            </div>
+        </header>
+
+        <div class="flex-grow-1 overflow-auto bg-background">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>lucide.createIcons();</script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/charts.js') }}"></script>
+    
+    {% block scripts %}{% endblock %}
+</body>
+</html>

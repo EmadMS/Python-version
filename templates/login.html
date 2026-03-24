@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Precision Lens</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-background d-flex align-items-center justify-content-center vh-100">
+
+    <div class="card border-0 shadow-lg p-4 p-md-5" style="max-width: 450px; width: 100%; border-radius: 16px;">
+        <div class="text-center mb-4">
+            <div class="bg-primary rounded d-inline-flex align-items-center justify-content-center mb-3" style="width: 48px; height: 48px;">
+                <i data-lucide="circle" class="text-white"></i>
+            </div>
+            <h3 class="font-headline fw-bolder tracking-tighter">Precision Lens</h3>
+            <p class="text-muted small text-uppercase tracking-widest">Enterprise Authentication</p>
+        </div>
+
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="alert alert-danger py-2 text-center" style="font-size: 14px;">
+              {{ messages[0] }}
+            </div>
+          {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="{{ url_for('login') }}">
+            <div class="mb-3">
+                <label class="form-label text-muted fw-bold text-uppercase" style="font-size: 11px;">Username</label>
+                <input type="text" name="username" class="form-control p-3 bg-light border-0" required placeholder="admin">
+            </div>
+            <div class="mb-4">
+                <label class="form-label text-muted fw-bold text-uppercase" style="font-size: 11px;">Password</label>
+                <input type="password" name="password" class="form-control p-3 bg-light border-0" required placeholder="password123">
+            </div>
+            <button type="submit" class="btn btn-primary w-100 py-3 fw-bold text-uppercase tracking-widest mb-3">Secure Login</button>
+            
+            <div class="text-center">
+                <a href="#" onclick="forgotPassword()" class="text-muted text-decoration-none" style="font-size: 12px;">Forgot Credentials?</a>
+            </div>
+        </form>
+    </div>
+
+    <script>lucide.createIcons();</script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

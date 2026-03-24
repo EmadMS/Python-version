@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="p-4 p-lg-5">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-5">
+        <div>
+            <h2 class="display-5 font-headline fw-bolder tracking-tighter mb-2">Vision Configuration</h2>
+            <p class="text-muted mb-0" style="max-width: 600px;">Configure high-precision edge detection zones for real-time customer behavior analytics. Privacy masking is enabled by default.</p>
+        </div>
+        <div class="d-flex gap-2">
+            <button class="btn btn-outline-secondary fw-bold text-uppercase" style="font-size: 0.8rem; letter-spacing: 1px;">Refresh Streams</button>
+            <button class="btn btn-primary fw-bold text-uppercase text-white" style="font-size: 0.8rem; letter-spacing: 1px;">Add New Node</button>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-5">
+        <div class="col-lg-8">
+            <div class="position-relative bg-dark rounded-3 overflow-hidden" style="aspect-ratio: 16/9;">
+                <img src="https://images.unsplash.com/photo-1534452286302-5f563c38b872?q=80&w=1000" class="w-100 h-100 object-fit-cover opacity-75 grayscale" alt="Entrance">
+                <div class="position-absolute w-100 h-100 top-0 start-0 pointer-events-none">
+                    <svg class="w-100 h-100" preserveAspectRatio="none" viewBox="0 0 100 100">
+                        <path d="M20,30 L80,30 L85,70 L15,70 Z" fill="rgba(186, 27, 36, 0.15)" stroke="#ba1b24" stroke-dasharray="2,2" stroke-width="0.5"></path>
+                    </svg>
+                    <div class="position-absolute bg-danger text-white fw-bold px-2 py-1 rounded text-uppercase" style="top: 35%; left: 45%; font-size: 10px;">Zone A: Entrance Flow</div>
+                </div>
+                <div class="position-absolute top-0 start-0 p-3 d-flex gap-2">
+                    <span class="badge bg-danger rounded-pill d-flex align-items-center gap-1 py-2 px-3 tracking-widest text-uppercase" style="font-size: 0.65rem;">
+                        <span class="spinner-grow spinner-grow-sm text-light" style="width: 0.5rem; height: 0.5rem;"></span> LIVE
+                    </span>
+                    <span class="badge bg-dark bg-opacity-75 rounded-pill py-2 px-3 backdrop-blur tracking-wider text-uppercase" style="font-size: 0.65rem;">Entrance 01</span>
+                </div>
+                <div class="position-absolute bottom-0 end-0 p-3 d-flex gap-2">
+                    <span class="badge glass-panel text-dark py-2 px-3 font-monospace border border-white border-opacity-25" style="font-size: 0.65rem;"><span class="opacity-50 me-1">RES:</span> 4K UHD</span>
+                    <span class="badge glass-panel text-dark py-2 px-3 font-monospace border border-white border-opacity-25" style="font-size: 0.65rem;"><span class="opacity-50 me-1">FPS:</span> 60.0</span>
+                    <span class="badge glass-panel text-dark py-2 px-3 font-monospace border border-white border-opacity-25" style="font-size: 0.65rem;"><span class="opacity-50 me-1">MDL:</span> YOLOv8-X</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 d-flex flex-column gap-4">
+            <div class="position-relative bg-dark rounded-3 overflow-hidden flex-grow-1 min-vh-25">
+                <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?q=80&w=1000" class="w-100 h-100 object-fit-cover opacity-75 grayscale">
+                <div class="position-absolute w-100 h-100 top-0 start-0 bg-gradient" style="background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);"></div>
+                <div class="position-absolute top-0 start-0 p-3 d-flex gap-2">
+                    <span class="badge bg-danger rounded-pill tracking-widest text-uppercase" style="font-size: 0.6rem;">LIVE</span>
+                    <span class="badge bg-dark bg-opacity-75 rounded-pill tracking-widest text-uppercase" style="font-size: 0.6rem;">Checkout L-4</span>
+                </div>
+                <div class="position-absolute bottom-0 start-0 p-3">
+                    <p class="text-white-50 fw-bold tracking-widest text-uppercase mb-1" style="font-size: 0.6rem;">Queue Density</p>
+                    <div class="progress bg-white bg-opacity-25" style="height: 6px; width: 128px;">
+                        <div class="progress-bar bg-warning" style="width: 75%"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="position-relative bg-dark rounded-3 overflow-hidden flex-grow-1 min-vh-25">
+                <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1000" class="w-100 h-100 object-fit-cover opacity-75 grayscale">
+                <div class="position-absolute w-100 h-100 top-0 start-0 bg-gradient" style="background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);"></div>
+                <div class="position-absolute top-0 start-0 p-3 d-flex gap-2">
+                    <span class="badge bg-danger rounded-pill tracking-widest text-uppercase" style="font-size: 0.6rem;">LIVE</span>
+                    <span class="badge bg-dark bg-opacity-75 rounded-pill tracking-widest text-uppercase" style="font-size: 0.6rem;">Display B-02</span>
+                </div>
+                <div class="position-absolute bottom-0 start-0 p-3">
+                    <p class="text-white-50 fw-bold tracking-widest text-uppercase mb-1" style="font-size: 0.6rem;">Engagement</p>
+                    <div class="progress bg-white bg-opacity-25" style="height: 6px; width: 128px;">
+                        <div class="progress-bar bg-primary" style="width: 40%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4 mt-4">
+        <div class="col-lg-8 d-flex flex-column gap-4">
+            <div class="d-flex justify-content-between align-items-center">
+                <h3 class="font-headline fw-bold fs-5 mb-0">Detection Zone Manager</h3>
+                <div class="d-flex align-items-center gap-2">
+                    <span class="text-muted fw-bold text-uppercase tracking-wider" style="font-size: 12px;">Active Presets:</span>
+                    <span class="badge bg-light text-primary border px-2 py-1">Holiday_Rush_2024</span>
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="bg-light p-4 rounded-3 h-100" style="border-left: 4px solid var(--secondary);">
+                        <div class="d-flex justify-content-between align-items-start mb-4">
+                            <div>
+                                <h6 class="fw-bold mb-1">Primary Entry Mask</h6>
+                                <p class="text-muted mb-0" style="font-size: 12px;">Entrance 01 • Quad-4</p>
+                            </div>
+                            <i data-lucide="spline" class="text-danger"></i>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="fw-bold text-muted text-uppercase tracking-tighter" style="font-size: 11px;">Sensitivity Threshold</span>
+                            <span id="sensitivity-value" class="fw-bold text-muted" style="font-size: 11px;">82%</span>
+                        </div>
+                        <input type="range" id="sensitivity-slider" class="form-range" min="0" max="100" value="82">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="bg-light p-4 rounded-3 h-100" style="border-left: 4px solid var(--primary);">
+                        <div class="d-flex justify-content-between align-items-start mb-4">
+                            <div>
+                                <h6 class="fw-bold mb-1">Conversion Hotspot</h6>
+                                <p class="text-muted mb-0" style="font-size: 12px;">Display B-02 • Sector A</p>
+                            </div>
+                            <i data-lucide="radio" class="text-primary"></i>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="fw-bold text-muted text-uppercase tracking-tighter" style="font-size: 11px;">Dwell Time Trigger</span>
+                            <span id="dwell-value" class="fw-bold text-muted" style="font-size: 11px;">4.5s</span>
+                        </div>
+                        <input type="range" id="dwell-slider" class="form-range" min="10" max="100" value="45">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="bg-light p-4 rounded-3 h-100">
+                <h6 class="font-headline fw-bold text-uppercase tracking-widest mb-4">Global Engine</h6>
+                <div class="d-flex flex-column gap-3 mb-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-muted fw-medium" style="font-size: 14px;">Object Persistence</span>
+                        <div class="form-check form-switch m-0"><input class="form-check-input bg-primary border-0" type="checkbox" checked></div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-muted fw-medium" style="font-size: 14px;">Shadow Suppression</span>
+                        <div class="form-check form-switch m-0"><input class="form-check-input bg-primary border-0" type="checkbox" checked></div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-muted fw-medium" style="font-size: 14px;">Anonymize Faces</span>
+                        <div class="form-check form-switch m-0"><input class="form-check-input bg-primary border-0" type="checkbox" checked></div>
+                    </div>
+                </div>
+                <div class="pt-3 border-top">
+                    <label class="fw-bold text-muted text-uppercase tracking-widest mb-2 d-block" style="font-size: 10px;">Processing Node</label>
+                    <select class="form-select border-0 fw-bold py-2" style="font-size: 12px;">
+                        <option>Edge_Worker_West_01</option>
+                        <option>Edge_Worker_East_04</option>
+                        <option>Cloud_Cluster_Premium</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-5 pt-5 border-top d-flex flex-column align-items-center gap-4">
+        <button onclick="window.location.href='{{ url_for('statistics') }}'" class="btn btn-dark btn-lg py-3 px-5 d-flex align-items-center gap-3 shadow">
+            <span class="font-headline fw-bolder tracking-tighter text-uppercase">Launch Analytics Dashboard</span>
+            <i data-lucide="arrow-right"></i>
+        </button>
+    </div>
+</div>
+{% endblock %}

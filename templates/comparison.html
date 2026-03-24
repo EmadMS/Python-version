@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="p-4 p-lg-5 max-w-1600 mx-auto">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-5">
+        <div>
+            <h2 class="display-5 font-headline fw-bolder tracking-tighter mb-2">Zone Comparison</h2>
+            <p class="text-muted mb-0">Surgical analysis of spatial performance metrics between primary retail floor sectors.</p>
+        </div>
+        <div class="d-flex gap-2">
+            <button class="btn btn-primary fw-bold text-uppercase d-flex align-items-center gap-2" style="font-size: 10px; letter-spacing: 1px;">
+                <i data-lucide="sliders-horizontal" style="width: 14px;"></i> Filter Segments
+            </button>
+            <button class="btn btn-light fw-bold text-uppercase d-flex align-items-center gap-2 border" style="font-size: 10px; letter-spacing: 1px;">
+                <i data-lucide="file-down" style="width: 14px;"></i> Export PDF
+            </button>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-5">
+        <div class="col-lg-5">
+            <div class="card border-0 shadow-sm h-100" style="border-left: 4px solid var(--primary) !important;">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-start mb-4">
+                        <div>
+                            <h6 class="text-primary fw-bold text-uppercase" style="font-size: 0.7rem; letter-spacing: 2px;">Zone Alpha</h6>
+                            <h3 class="font-headline fw-bold mb-0">Main Entrance</h3>
+                        </div>
+                        <i data-lucide="door-open" class="text-muted"></i>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-4">
+                            <div class="bg-light p-3 rounded">
+                                <small class="text-muted fw-bold text-uppercase d-block mb-1" style="font-size: 10px;">Total Footfall</small>
+                                <h4 class="font-headline fw-bold mb-1">14,208</h4>
+                                <div class="text-primary fw-bold d-flex align-items-center" style="font-size: 10px;"><i data-lucide="trending-up" class="me-1" style="width: 12px;"></i> 12%</div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="bg-light p-3 rounded">
+                                <small class="text-muted fw-bold text-uppercase d-block mb-1" style="font-size: 10px;">Avg Dwell</small>
+                                <h4 class="font-headline fw-bold mb-1">02:45</h4>
+                                <div class="text-muted fw-medium" style="font-size: 10px;">m:s</div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="bg-light p-3 rounded">
+                                <small class="text-muted fw-bold text-uppercase d-block mb-1" style="font-size: 10px;">Conversion</small>
+                                <h4 class="font-headline fw-bold mb-1">8.4%</h4>
+                                <div class="text-danger fw-bold d-flex align-items-center" style="font-size: 10px;"><i data-lucide="trending-down" class="me-1" style="width: 12px;"></i> 2.1%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-2 d-flex align-items-center justify-content-center">
+            <div class="bg-light rounded-circle d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+                <i data-lucide="arrow-left-right" class="text-primary"></i>
+            </div>
+        </div>
+
+        <div class="col-lg-5">
+            <div class="card border-0 shadow-sm h-100" style="border-right: 4px solid var(--secondary) !important;">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-start mb-4">
+                        <div>
+                            <h6 class="text-secondary fw-bold text-uppercase" style="font-size: 0.7rem; letter-spacing: 2px;">Zone Beta</h6>
+                            <h3 class="font-headline fw-bold mb-0">Main Checkout</h3>
+                        </div>
+                        <i data-lucide="shopping-cart" class="text-muted"></i>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-4">
+                            <div class="bg-light p-3 rounded">
+                                <small class="text-muted fw-bold text-uppercase d-block mb-1" style="font-size: 10px;">Total Footfall</small>
+                                <h4 class="font-headline fw-bold mb-1">5,870</h4>
+                                <div class="text-primary fw-bold d-flex align-items-center" style="font-size: 10px;"><i data-lucide="trending-up" class="me-1" style="width: 12px;"></i> 4.5%</div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="bg-light p-3 rounded">
+                                <small class="text-muted fw-bold text-uppercase d-block mb-1" style="font-size: 10px;">Avg Dwell</small>
+                                <h4 class="font-headline fw-bold mb-1">06:12</h4>
+                                <div class="text-muted fw-medium" style="font-size: 10px;">m:s</div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="bg-light p-3 rounded">
+                                <small class="text-muted fw-bold text-uppercase d-block mb-1" style="font-size: 10px;">Conversion</small>
+                                <h4 class="font-headline fw-bold mb-1">92.1%</h4>
+                                <div class="text-primary fw-bold d-flex align-items-center" style="font-size: 10px;"><i data-lucide="trending-up" class="me-1" style="width: 12px;"></i> 1.8%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-5">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body p-4 p-lg-5">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div>
+                            <h5 class="font-headline fw-bold mb-0">Hourly Traffic Flow</h5>
+                            <small class="text-muted">Synchronized distribution comparison (24h period)</small>
+                        </div>
+                        <div class="d-flex gap-3">
+                            <div class="d-flex align-items-center gap-2"><span class="bg-primary rounded-1" style="width: 12px; height: 12px;"></span><small class="fw-bold text-uppercase" style="font-size: 10px;">Entrance</small></div>
+                            <div class="d-flex align-items-center gap-2"><span class="bg-secondary rounded-1" style="width: 12px; height: 12px;"></span><small class="fw-bold text-uppercase" style="font-size: 10px;">Checkout</small></div>
+                        </div>
+                    </div>
+                    <div style="height: 300px; width: 100%;">
+                        <canvas id="comparisonChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card border-0 bg-light h-100">
+                <div class="card-body p-4 d-flex flex-column">
+                    <div class="d-flex align-items-center gap-2 mb-4">
+                        <div class="bg-primary bg-opacity-10 text-primary p-2 rounded"><i data-lucide="brain"></i></div>
+                        <h5 class="font-headline fw-bold mb-0">Comparison Insights</h5>
+                    </div>
+                    <div class="d-flex flex-column gap-3 flex-grow-1">
+                        <div class="bg-white p-3 rounded shadow-sm" style="border-left: 2px solid var(--primary);">
+                            <p class="text-muted fw-bold text-uppercase mb-1" style="font-size: 11px;">Footfall Delta</p>
+                            <p class="text-sm mb-0">Entrance footfall is <span class="fw-bold text-primary">142% higher</span> than Checkout.</p>
+                        </div>
+                        <div class="bg-white p-3 rounded shadow-sm" style="border-left: 2px solid var(--secondary);">
+                            <p class="text-muted fw-bold text-uppercase mb-1" style="font-size: 11px;">Dwell Time Analysis</p>
+                            <p class="text-sm mb-0">Checkout retention is <span class="fw-bold text-danger">2.25x longer</span> than entrance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    window.comparisonChartData = {{ chart_data | tojson }};
+</script>
+{% endblock %}

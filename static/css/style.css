@@ -1,0 +1,76 @@
+:root {
+  --primary: #545f73;
+  --primary-dim: #485367;
+  --secondary: #ba1b24;
+  --tertiary: #865400;
+  --background: #f7f9fb;
+  --surface: #ffffff;
+  --surface-container: #e8eff3;
+  --surface-container-low: #f0f4f7;
+  --on-surface: #2a3439;
+  --on-surface-variant: #566166;
+  --outline-variant: #a9b4b9;
+}
+
+body {
+    background-color: var(--background);
+    font-family: 'Inter', sans-serif;
+    color: var(--on-surface);
+}
+
+.font-headline { font-family: 'Manrope', sans-serif; }
+.tracking-tighter { letter-spacing: -0.05em; }
+.tracking-wider { letter-spacing: 0.05em; }
+
+.bg-background { background-color: var(--background); }
+.bg-surface { background-color: var(--surface); }
+.bg-primary { background-color: var(--primary) !important; }
+.text-primary { color: var(--primary) !important; }
+.bg-secondary { background-color: var(--secondary) !important; }
+.text-secondary { color: var(--secondary) !important; }
+.bg-tertiary { background-color: var(--tertiary) !important; }
+
+.sidebar {
+    width: 260px;
+    height: 100vh;
+    position: fixed;
+    background-color: var(--surface-container);
+    z-index: 1040;
+}
+.main-content {
+    margin-left: 260px;
+}
+
+.nav-link {
+    color: var(--on-surface-variant);
+    font-weight: 500;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+}
+.nav-link:hover {
+    color: var(--primary);
+    background-color: rgba(0,0,0,0.03);
+}
+.nav-link.active {
+    background-color: white;
+    color: var(--primary);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    transform: translateX(4px);
+}
+
+.heatmap-gradient {
+    background: radial-gradient(circle at 30% 40%, rgba(186, 27, 36, 0.4) 0%, transparent 40%),
+                radial-gradient(circle at 70% 60%, rgba(248, 160, 16, 0.4) 0%, transparent 45%),
+                radial-gradient(circle at 20% 80%, rgba(248, 160, 16, 0.3) 0%, transparent 30%);
+    filter: blur(12px);
+}
+
+.glass-panel {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+}
+.grayscale { filter: grayscale(100%); }
+.cursor-pointer { cursor: pointer; }
