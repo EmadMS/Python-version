@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="p-4 p-lg-5 max-w-1600 mx-auto">
+    <div class="d-flex justify-content-between align-items-end mb-5">
+        <div>
+            <h2 class="display-5 font-headline fw-bolder tracking-tighter mb-2">Zone Comparison</h2>
+            <p class="text-muted mb-0">Surgical analysis of spatial performance metrics between primary retail floor sectors.</p>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-5">
+        <div class="col-lg-5">
+            <div class="card border-0 shadow-sm h-100" style="border-left: 4px solid var(--primary) !important;">
+                <div class="card-body p-4">
+                    <h6 class="text-primary fw-bold text-uppercase" style="font-size: 0.7rem; letter-spacing: 2px;">Zone Alpha</h6>
+                    <h3 class="font-headline fw-bold mb-4">Main Entrance</h3>
+                    <div class="row g-3">
+                        <div class="col-4">
+                            <div class="bg-light p-3 rounded">
+                                <small class="text-muted fw-bold text-uppercase d-block mb-1" style="font-size: 10px;">Footfall</small>
+                                <h4 class="font-headline fw-bold mb-0">14,208</h4>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="bg-light p-3 rounded">
+                                <small class="text-muted fw-bold text-uppercase d-block mb-1" style="font-size: 10px;">Avg Dwell</small>
+                                <h4 class="font-headline fw-bold mb-0">02:45</h4>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="bg-light p-3 rounded">
+                                <small class="text-muted fw-bold text-uppercase d-block mb-1" style="font-size: 10px;">Conversion</small>
+                                <h4 class="font-headline fw-bold mb-0">8.4%</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-2 d-flex align-items-center justify-content-center">
+            <div class="bg-light rounded-circle d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+                <i data-lucide="arrow-left-right" class="text-primary"></i>
+            </div>
+        </div>
+
+        <div class="col-lg-5">
+            <div class="card border-0 shadow-sm h-100" style="border-right: 4px solid var(--secondary) !important;">
+                <div class="card-body p-4">
+                    <h6 class="text-secondary fw-bold text-uppercase" style="font-size: 0.7rem; letter-spacing: 2px;">Zone Beta</h6>
+                    <h3 class="font-headline fw-bold mb-4">Main Checkout</h3>
+                    <div class="row g-3">
+                        <div class="col-4">
+                            <div class="bg-light p-3 rounded"><h4 class="font-headline fw-bold mb-0">5,870</h4></div>
+                        </div>
+                        <div class="col-4">
+                            <div class="bg-light p-3 rounded"><h4 class="font-headline fw-bold mb-0">06:12</h4></div>
+                        </div>
+                        <div class="col-4">
+                            <div class="bg-light p-3 rounded"><h4 class="font-headline fw-bold mb-0">92.1%</h4></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <h5 class="font-headline fw-bold">Hourly Traffic Flow</h5>
+                    <div style="height: 300px; width: 100%;">
+                        <canvas id="comparisonChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Grab data passed from Flask
+    const rawData = {{ chart_data | tojson }};
+    
+    // Format for Chart.js
+    const labels = rawData.map(d => d.time);
+    const entranceData = rawData.map(d => d.entrance);
+    const checkoutData = rawData.map(d => d.checkout);
+
+    const ctx = document.getElementById('comparisonChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Entrance',
+                    data: entranceData,
+                    backgroundColor: '#545f73',
+                    borderRadius: 4
+                },
+                {
+                    label: 'Checkout',
+                    data: checkoutData,
+                    backgroundColor: '#ba1b24',
+                    borderRadius: 4
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: { display: false }, // Hides Y axis like Recharts `hide` prop
+                x: { grid: { display: false } }
+            },
+            plugins: {
+                legend: { display: false }
+            }
+        }
+    });
+</script>
+{% endblock %}

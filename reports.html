@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="p-4 p-lg-5 max-w-1600 mx-auto">
+    <div class="d-flex justify-content-between align-items-end mb-5">
+        <div>
+            <span class="fw-bold text-uppercase tracking-widest text-muted" style="font-size: 11px;">System Tooling</span>
+            <h1 class="display-4 font-headline fw-bolder tracking-tighter mb-0">Export Configuration</h1>
+        </div>
+        <span class="badge bg-light text-muted border px-3 py-2 rounded-pill fw-medium d-flex align-items-center gap-2">
+            <span class="rounded-circle bg-primary" style="width: 8px; height: 8px;"></span> Last sync: 4 minutes ago
+        </span>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm p-4 p-lg-5 position-relative overflow-hidden">
+                <i data-lucide="file-text" class="position-absolute opacity-5" style="width: 150px; height: 150px; right: -20px; top: -20px;"></i>
+                
+                <div class="row g-5 position-relative z-1">
+                    <div class="col-md-6">
+                        <label class="fw-bold text-uppercase tracking-wider text-muted mb-3" style="font-size: 12px;">Temporal Range</label>
+                        <select class="form-select bg-light mb-3 p-3 fw-medium border-0">
+                            <option>Oct 01, 2023 - Oct 31, 2023</option>
+                            <option>Last 7 Days</option>
+                            <option>Last 30 Days</option>
+                        </select>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-light flex-grow-1" style="font-size: 12px;">7 Days</button>
+                            <button class="btn btn-light flex-grow-1" style="font-size: 12px;">30 Days</button>
+                            <button class="btn btn-primary flex-grow-1 text-white" style="font-size: 12px;">Custom</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="fw-bold text-uppercase tracking-wider text-muted mb-3" style="font-size: 12px;">Data Granularity</label>
+                        <div class="d-flex flex-column gap-2">
+                            <label class="bg-light p-3 rounded d-flex justify-content-between align-items-center cursor-pointer">
+                                <span class="fw-medium text-muted" style="font-size: 14px;">Hourly Increments</span>
+                                <input type="radio" name="gran" class="form-check-input">
+                            </label>
+                            <label class="bg-white border border-primary border-opacity-25 p-3 rounded d-flex justify-content-between align-items-center cursor-pointer shadow-sm">
+                                <span class="fw-bold text-primary" style="font-size: 14px;">Daily Aggregation</span>
+                                <input type="radio" name="gran" class="form-check-input" checked>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm h-100 p-4 p-lg-5 d-flex flex-column justify-content-between">
+                <div>
+                    <label class="fw-bold text-uppercase tracking-wider text-muted mb-4" style="font-size: 12px;">Output Format</label>
+                    <div class="d-flex flex-column gap-3">
+                        <div class="border border-primary bg-primary bg-opacity-10 p-3 rounded d-flex align-items-center gap-3">
+                            <div class="bg-primary text-white rounded p-2"><i data-lucide="file-text"></i></div>
+                            <div>
+                                <h6 class="mb-0 fw-bold">PDF Document</h6>
+                                <small class="text-muted">Visual charts & summary</small>
+                            </div>
+                        </div>
+                        <div class="border p-3 rounded d-flex align-items-center gap-3">
+                            <div class="bg-light text-muted rounded p-2"><i data-lucide="file-code"></i></div>
+                            <div>
+                                <h6 class="mb-0 fw-bold">Raw CSV</h6>
+                                <small class="text-muted">Lightweight flat data</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary w-100 py-3 mt-4 fw-bold text-uppercase tracking-widest d-flex align-items-center justify-content-center gap-2 text-white shadow-sm">
+                    <i data-lucide="download"></i> Generate Report
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
